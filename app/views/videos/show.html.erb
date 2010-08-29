@@ -1,0 +1,30 @@
+<tr><td>
+  <p style="color:green"><%= flash[:success] %></p>
+  <b><%=h @video.name %></b>
+
+		<!-- player container-->
+
+		<div id="player" style="width:500px;height:324px;"></div>
+
+		<!-- Flowplayer installation -->
+		<script language="JavaScript">
+    flowplayer(
+      "player", "/files/flowplayer/flowplayer-3.2.3.swf", {
+        clip: {"provider":"pseudostreaming","url":"<%=h @path%>"},
+        screen: {"height":"100pct","top":0},
+        plugins: {
+          controls:{"timeColor":"#ffffff","borderRadius":"0px","bufferGradient":"none","slowForward":true,"backgroundColor":"rgba(0, 0, 0, 0)","volumeSliderGradient":"none","slowBackward":false,"progressGradient":"medium","time":true,"height":26,"tooltips":{"marginBottom":5,"scrubber":true,"volume":true,"buttons":false},"opacity":1,"fastBackward":false,"border":"0px","volumeSliderColor":"#000000","bufferColor":"#ffffff","buttonColor":"rgba(0, 0, 0, 0.7)","mute":true,"autoHide":{"enabled":true,"hideDelay":2000,"hideStyle":"fade","mouseOutDelay":500,"hideDuration":400,"fullscreenOnly":false},"backgroundGradient":[0,0.2,0.4],"width":"100pct","display":"block","buttonOverColor":"#333333","url":"flowplayer.controls-air-3.2.2.swf","fullscreen":true,"timeBgColor":"rgba(0, 0, 0, 0)","scrubberBarHeightRatio":0.3,"bottom":0,"stop":false,"sliderColor":"#cccccc","zIndex":1,"scrubberHeightRatio":0.6,"tooltipTextColor":"#ffffff","sliderGradient":"none","timeBgHeightRatio":0.7,"volumeSliderHeightRatio":0.4,"name":"controls","volumeBarHeightRatio":1,"left":"50pct","tooltipColor":"rgba(0, 0, 0, 0)","playlist":false,"durationColor":"#ff3d3d","play":true,"fastForward":true,"progressColor":"#000000","timeBorder":"1px solid rgba(0, 0, 0, 0.3)","volume":false,"scrubber":true,"builtIn":false
+          },
+          pseudostreaming: {
+            url: 'flowplayer.pseudostreaming-3.2.3.swf'
+          }
+        }
+      }
+    );
+		</script>	
+
+
+  <br /><span class="fileinfo"><%= @video.get_fileinfo%></span><br />
+
+  <%= link_to 'To main page', videos_path %>
+</td></tr>

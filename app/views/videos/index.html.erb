@@ -1,0 +1,24 @@
+<tr><td>
+  <span style="color:red"><%=h flash[:fail] %></span>
+  <% form_tag nil, :multipart => true, :onsubmit=>'check_extension(event)' do %>    
+    <label for="name" style="">Name your video</label> <%= text_field_tag "name" %>
+    <label for="file">choose it</label> <%= file_field_tag "file" %> and
+    <%= submit_tag 'Upload' %>
+    <p style="display:none; color:red" id="error"></p>
+  <% end %>
+</td>
+</tr><tr><td>
+<hr />
+  <h1>Listing videos</h1>
+
+  <table>
+
+  <% @videos.each do |video| %>
+    <tr>
+      <td><img alt="thumbnail" src="<%= video.thumb_path %>" style="float:left" /> </td>
+      <td><%= video.name %></td>
+      <td><%= link_to 'Show', video %></td>
+    </tr>
+  <% end %>
+  </table>
+</td></tr>
